@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mylab6list.MainPage">
+
+    <StackLayout>
+        <Label Text="{Binding Source={x:Reference Name=phonesList}, Path=SelectedItem.Title}"
+            FontSize="Large" />
+        <ListView x:Name="phonesList"
+              HasUnevenRows="True"
+            ItemsSource="{Binding Phones}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                           
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="Large" />
+                                <Label Text="{Binding Company}" />
+                                <Label Text="{Binding Price}" />
+                                <Image Source="{Binding ImagePath}" WidthRequest="45" HeightRequest="60" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            
+            <Button Clicked="AddItem" Text="Добавить" />
+            <Button Clicked="RemoveItem" Text="Удалить" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
+
